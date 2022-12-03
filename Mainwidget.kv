@@ -1,0 +1,183 @@
+#:kivy 1.11.1
+<Main_widget>:
+    MDBoxLayout:
+        orientation:'vertical'
+        MDTopAppBar:
+            title: "Refinery Supervisory"
+        MDBottomNavigation:
+            panel_color: app.theme_cls.accent_color
+            text_color_normal:0.4,0.4,0.4,1
+            text_color_active:0.8,0.8,0.8,1
+            MDBottomNavigationItem:
+                name:"config"
+                text:"Supervisory"
+                icon: "home"
+                MDFloatLayout:
+                    orientation: 'horizontal'
+                    padding: "20p"
+                    spacing: "50dp"
+                    Image:
+                        source:"Refinaria.png"
+                        pos_hint: {"mid_center_x":0.4,"mid_center_y":0.4} 
+                        size_hint: {1,0.8}  
+                    # Label:
+                    #     id: lb_temp
+                    #     size_hint: (None,None)
+                    #     size: (termometer.size[0]*0.25,termometer.size[1])
+                    #     pos_hint:{'x':-0.06,'y':0.3}
+                    #     canvas:
+                    #         Color:
+                    #             rgb: 1,1,0
+                    #         Rectangle:
+                    #             size: self.size
+                    #             pos: (self.pos[0]+self.width*1.5,self.pos[1])
+                    # Image:
+                    #     id: termometer
+                    #     source:'termometro.png'
+                    #     size_hint:0.17,0.17
+                    #     pos_hint: lb_temp.pos_hint
+                    Label:
+                        id: furnace
+                        text: ' -.-ºC'
+                        font_size: 25 
+                        bold: True
+                        halign: 'center'
+                        pos_hint: {'x': -0.43,'y':-0.05}
+                        color: 0,0,0,1
+                    Label:
+                        id: gas
+                        text: ' -.-ºC'
+                        font_size: 25 
+                        bold: True
+                        halign: 'center'
+                        pos_hint:{'x':0.11, 'y':0.2}
+                        color: 0,0,0,1
+                    Label:
+                        id: gasoline
+                        text: ' -.-ºC'
+                        font_size: 25 
+                        bold: True
+                        halign: 'center'
+                        pos_hint:{'x':0.11, 'y':0.13}
+                        color: 0,0,0,1
+                    Label:
+                        id: nafta
+                        text: ' -.-ºC'
+                        font_size: 25 
+                        bold: True
+                        halign: 'center'
+                        pos_hint:{'x':0.11, 'y':0.06}
+                        color: 0,0,0,1
+                    Label:
+                        id: querosine
+                        text: ' -.-ºC'
+                        font_size: 25 
+                        bold: True
+                        halign: 'center'
+                        pos_hint:{'x':0.11, 'y':-0.01}
+                        color: 0,0,0,1
+                    Label:
+                        id: diesel
+                        text: ' -.-ºC'
+                        font_size: 25 
+                        bold: True
+                        halign: 'center'
+                        pos_hint:{'x':0.11, 'y':-0.08}
+                        color: 0,0,0,1
+                        color: 0,0,0,1
+                    Label:
+                        id: lub_oil
+                        text: ' -.-ºC'
+                        font_size: 25 
+                        bold: True
+                        halign: 'center'
+                        pos_hint:{'x':0.11, 'y':-0.15}
+                        color: 0,0,0,1
+                    Label:
+                        id: fuel_oil
+                        text: ' -.-ºC'
+                        font_size: 25 
+                        bold: True
+                        halign: 'center'
+                        color: 0,0,0,1
+                        pos_hint:{'x':0.11, 'y':-0.23}
+                    Label:
+                        id: residues
+                        text: ' -.-ºC'
+                        font_size: 25 
+                        bold: True
+                        halign: 'center'
+                        pos_hint:{'x':0.11, 'y':-0.3}
+                        color: 0,0,0,1
+                    MDRoundFlatIconButton:
+                        id: bt_con
+                        text:"Connections"
+                        icon:'connection'
+                        pos_hint:{"top":0.1,"right":0.8}
+                        on_release: root._mbuspopup.open()
+                    MDRoundFlatIconButton:
+                        id: bt_scn
+                        text:"Time-scan"
+                        icon:'timer'
+                        pos_hint:{"top":0.1,"right":0.95} 
+                        on_release: root._scanpopup.open()                                  
+            MDBottomNavigationItem:
+                name:"Plot"
+                text:"Plot monitor"
+                icon: "chart"
+                MDFloatLayout:
+                    orientation: 'vertical'
+                    valign:'top'
+                    size_hint :(1,0.9)
+                    TimeSeriesGraph:
+                        id: graf
+                        xlabel:"Timestamp"
+                        ylabel: "Temperature[ºC]"
+                        background_color: 0.5,0.5,0.5,0.5
+                        x_ticks_minor:1
+                        x_ticks_major:5
+                        y_ticks_major:100
+                        x_grid_label: True
+                        y_grid_label: True
+                        padding: 5
+                        xmin: 0
+                        ymin: 0
+                        ymax: 500
+                    MDBoxLayout:
+                        orientation:'horizontal'
+                        size_hint :(1,0.5)
+                        MDBoxLayout:
+                            orientation: 'horizontal'
+                            size_hint:(0.5,1)
+                            Label:
+                                size_hint: (0.3,1)
+                                text:"Number of graph points"
+                            LabeledCheckBoxDataGraph:
+                                id:mp20
+                                on_kv_post:
+                                    self.ids.label.text='20'
+                                    self.ids.checkbox.group ='cb_group'
+                            LabeledCheckBoxDataGraph:
+                                id:mp50
+                                on_kv_post:
+                                    self.ids.label.text='50'
+                                    self.ids.checkbox.group ='cb_group'
+                            LabeledCheckBoxDataGraph:
+                                id:mp100
+                                on_kv_post:
+                                    self.ids.label.text='100'
+                                    self.ids.checkbox.group ='cb_group'       
+                 
+
+#radio box (cb_group)
+<LabeledCheckBoxDataGraph>:
+    orientation:'horizontal'
+    size_hint: (0.1,1)
+    CheckBox:
+        id:checkbox
+        on_active: app.root.ids.graf.setMaxPoints(int(label.text),0) if app.root is not None else None
+    Label:
+        id:label 
+
+
+

@@ -1,0 +1,87 @@
+#:kivy 1.11.1
+<ModbusPopUp>:
+    title: "Modbus_settings"
+    size_hint_y: None
+    size_hint_x: 0.4
+    height: 250
+    BoxLayout:
+        id: config
+        orientation: 'vertical'
+        GridLayout:
+            cols: 2
+            rows: 2
+        Label:
+            text:"IP"
+            font_size:  10
+        TextInput:
+            id: tx_ip
+            text:"127.0.0.1"
+            font_size: 14
+            halign:'center'
+            valign:'middle'
+        Label:
+            text:"Porta"
+            font_size:10
+        TextInput:
+            id: tx_port
+            text:"502"
+            font_size: 14
+            halign:'center'
+            valign:'middle'
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                id: btn_popup_mbus
+                size_hint_y: None
+                height: 30
+                text: "Connect"
+                on_release:
+                    app.root.updaterStart(tx_ip.text,int(tx_port.text))
+            Button:
+                size_hint_y: None
+                height: 30
+                text: "Close"
+                on_release: 
+                    root.dismiss()
+        Label:
+            id: info_label
+            text: ""
+
+
+<ScanPopup>:
+    title: "Scan time "
+    size_hint_y: None
+    size_hint_x: 0.4
+    height: 250
+    BoxLayout:
+        id: time
+        orientation: 'vertical'
+        GridLayout:
+            cols: 2
+            rows: 1
+        Label:
+            text: "Scan time(ms)"
+            font_size:14
+        TextInput:
+            id:scan
+            font_size: 14
+            halign:'center'
+            valign:'middle'
+        BoxLayout:
+            orientation:'horizontal'
+            Button:
+                size_hint_y: None
+                height: 40
+                text: "Run"
+                on_release: 
+                    app.root._scantime= int(scan.text)
+                    root.dismiss()
+            Button:
+                size_hint_y: None
+                height: 40
+                text: "Close"
+                on_release: 
+                    root.dismiss()
+
+
+
