@@ -1,0 +1,5 @@
+kivy[full]
+kivy_garden.graph
+pymodbustcp
+kivymd[full]
+auto-py-to-exe
