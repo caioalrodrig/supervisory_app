@@ -20,22 +20,6 @@
                         source:"Refinaria.png"
                         pos_hint: {"mid_center_x":0.4,"mid_center_y":0.4} 
                         size_hint: {1,0.8}  
-                    # Label:
-                    #     id: lb_temp
-                    #     size_hint: (None,None)
-                    #     size: (termometer.size[0]*0.25,termometer.size[1])
-                    #     pos_hint:{'x':-0.06,'y':0.3}
-                    #     canvas:
-                    #         Color:
-                    #             rgb: 1,1,0
-                    #         Rectangle:
-                    #             size: self.size
-                    #             pos: (self.pos[0]+self.width*1.5,self.pos[1])
-                    # Image:
-                    #     id: termometer
-                    #     source:'termometro.png'
-                    #     size_hint:0.17,0.17
-                    #     pos_hint: lb_temp.pos_hint
                     Label:
                         id: furnace
                         text: ' -.-ºC'
@@ -168,7 +152,6 @@
                                     self.ids.label.text='100'
                                     self.ids.checkbox.group ='cb_group'       
                  
-
 #radio box (cb_group)
 <LabeledCheckBoxDataGraph>:
     orientation:'horizontal'
@@ -178,7 +161,6 @@
         on_active: app.root.ids.graf.setMaxPoints(int(label.text),0) if app.root is not None else None
     Label:
         id:label 
-
 
 #:kivy 1.11.1
 <Main_widget>:
@@ -201,22 +183,6 @@
                         source:"Refinaria.png"
                         pos_hint: {"mid_center_x":0.4,"mid_center_y":0.4} 
                         size_hint: {1,0.8}  
-                    # Label:
-                    #     id: lb_temp
-                    #     size_hint: (None,None)
-                    #     size: (termometer.size[0]*0.25,termometer.size[1])
-                    #     pos_hint:{'x':-0.06,'y':0.3}
-                    #     canvas:
-                    #         Color:
-                    #             rgb: 1,1,0
-                    #         Rectangle:
-                    #             size: self.size
-                    #             pos: (self.pos[0]+self.width*1.5,self.pos[1])
-                    # Image:
-                    #     id: termometer
-                    #     source:'termometro.png'
-                    #     size_hint:0.17,0.17
-                    #     pos_hint: lb_temp.pos_hint
                     Label:
                         id: furnace
                         text: ' -.-ºC'
@@ -428,10 +394,7 @@
                             halign: 'center'
                             valign: 'middle'
                             multiline: False
-                            pos_hint:{'x':0.7, 'y':0.2}
-
-
-                 
+                            pos_hint:{'x':0.7, 'y':0.2}  
 
 #radio box (cb_group)
 <LabeledCheckBoxHistGraph>:
@@ -460,6 +423,3 @@
         id:label 
         markup: True
         color: 0,0,0,0.5
-
-
-
